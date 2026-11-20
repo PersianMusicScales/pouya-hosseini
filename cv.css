@@ -1,0 +1,95 @@
+.cv-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 48rem) minmax(8rem, 11.25rem);
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6.5rem);
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+.cv-intro h1 { font-size: clamp(3.75rem, 7.4vw, 7rem); margin: 1rem 0; }
+.cv-intro h1 em { color: var(--hero-accent); }
+.cv-intro .intro { max-width: 54ch; }
+.cv-photo { margin-right: .6rem; padding: .25rem; box-shadow: .6rem .6rem 0 -1px var(--hero-green), .6rem .6rem 0 #b6ad91; background: #d5d9c6; }
+.cv-photo img { width: 100%; height: auto; }
+.cv-layout {
+  display: grid;
+  grid-template-columns: minmax(10.5rem, 13.5rem) minmax(0, 1fr);
+  gap: clamp(2rem, 6.6vw, 6rem);
+  padding-block: var(--section-pad);
+}
+.cv-aside { align-self: start; position: sticky; top: 1.3rem; }
+.cv-index { padding-bottom: .6rem; border-block: 1px solid var(--rule); }
+.cv-index summary { cursor: pointer; font-size: .94rem; line-height: 1.4; font-weight: 650; color: var(--accent); padding-block: .9rem; }
+.cv-index nav { display: grid; }
+.cv-index nav a { padding: .42rem .75rem; min-height: 2.1rem; border-inline-start: 2px solid transparent; color: var(--body); font-size: .99rem; line-height: 1.3; text-decoration: none; }
+.cv-index nav a:hover, .cv-index nav a[aria-current] { background: var(--tint); color: var(--accent); border-color: var(--accent); }
+.cv-content { min-width: 0; max-width: 52rem; }
+.cv-section { border-top: 1px solid var(--rule); padding-block: clamp(2rem, 3.7vw, 3.35rem); }
+.cv-section:first-child { border: 0; padding-top: 0; }
+.cv-section:last-child { padding-bottom: 0; }
+.cv-section h2 { font-size: clamp(2.45rem, 3.65vw, 3.6rem); margin-bottom: 1.25rem; }
+.cv-section h3 { font-size: clamp(1.65rem, 2.5vw, 2.15rem); }
+.cv-section h3:not(:first-child) { margin-top: 1.1rem; }
+.cv-section p, .cv-section li, .cv-expertise dd { overflow-wrap: anywhere; }
+.cv-section :is(ul,ol):not(.bibliography) { padding-inline-start: 1.2em; margin-block: .75rem 0; }
+.cv-section ul li, .cv-section ol:not(.bibliography) li { color: var(--body); padding-inline-start: .22em; margin-top: .54rem; }
+.cv-section li::marker { color: var(--accent); }
+.cv-role { margin-top: 1.6rem; padding-left: 1.1rem; border-left: 2px solid var(--rule-strong); }
+.cv-role h3:not(:first-child) { margin-top: .4rem; }
+.cv-role .label { font-size: .84rem; }
+.cv-expertise { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem; }
+.cv-expertise div { padding: 1.05rem 1.25rem; border: 1px solid var(--rule); border-radius: .4rem; background: var(--panel); }
+.cv-expertise dt { font-size: 1.12rem; font-weight: 650; }
+.cv-expertise dd { margin: .45rem 0 0; color: var(--body); }
+.cv-profile-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: .85rem; }
+.cv-profile-links a, #honors p a { color: var(--accent); font-weight: 600; }
+.cv-section a .service-icon { margin-inline-end: .35rem; }
+.bibliography { list-style: none; padding: 0; }
+.bibliography li { border-top: 1px solid var(--rule); padding: 1rem 0; }
+.bibliography li:last-child { padding-bottom: 0; }
+.bibliography h3 { margin: 0; font-size: clamp(1.55rem, 2.1vw, 1.98rem); }
+.bibliography h3 a { text-decoration: underline; text-decoration-color: var(--rule-strong); text-decoration-thickness: 1px; text-underline-offset: .15em; }
+.bibliography h3 a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+.bibliography .authors { margin: .45rem 0 .1rem; font-size: 1rem; }
+.bibliography .venue { color: var(--accent); font-size: .96rem; }
+#honors ul + p { margin-top: 1.1rem; }
+@media (max-width: 48rem) {
+  .cv-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .cv-aside { position: static; }
+  .cv-index { padding: 0; }
+  .cv-index nav { padding-bottom: .8rem; }
+  .cv-index nav a { min-height: 2.75rem; display: flex; align-items: center; }
+}
+@media (max-width: 40rem) {
+  .cv-intro { grid-template-columns: 1fr; }
+  .cv-photo { display: none; }
+  .cv-expertise { grid-template-columns: 1fr; }
+}
+@media print {
+  @page { size: auto; margin: 14mm 16mm; }
+  :root { color-scheme: light; --ink: #111; --body: #252525; --accent: #254536; --rule: #c9c9c9; --rule-strong: #aaa; }
+  body { background: white; color: #111; font: 10.5pt/1.36 var(--sans); }
+  .wrap { width: 100%; max-width: none; }
+  .mast, .skip, .footer, .cv-aside, .cv-intro .actions, .cv-photo { display: none; }
+  .opening, .cv-intro { display: block; background: white; color: #111; border: 0; animation: none; }
+  .cv-intro { padding: 0 0 11pt; border-bottom: 1pt solid #888; }
+  .cv-intro h1 { font-size: 32pt; margin: 4pt 0; }
+  .cv-intro h1 em, .cv-intro .intro, .cv-intro .eyebrow { color: #222; }
+  .cv-intro .intro { font-size: 11pt; max-width: none; }
+  .cv-layout { display: block; padding: 12pt 0 0; }
+  .cv-content { max-width: none; }
+  .cv-section { padding: 11pt 0; }
+  .cv-section h2 { font-size: 20pt; margin: 0 0 5pt; }
+  .cv-section h3, .bibliography h3 { font-size: 13pt; }
+  .cv-role { border: 0; padding: 0; margin-top: 8pt; }
+  .cv-role .label, .eyebrow { font-size: 8pt; }
+  .cv-expertise { display: block; }
+  .cv-expertise div { padding: 3pt 0; background: white; border: 0; }
+  .cv-expertise dt { font-size: 10.5pt; }
+  .cv-expertise dd { margin-top: 1pt; }
+  .bibliography li { padding: 6pt 0; break-inside: avoid; }
+  .bibliography .authors, .bibliography .venue { font-size: 9.5pt; }
+  .cv-section h2, .cv-section h3, .cv-role .label { break-after: avoid; }
+  .cv-expertise div, .cv-section li { break-inside: avoid; }
+  .cv-section li, .cv-section p { orphans: 3; widows: 3; }
+}
